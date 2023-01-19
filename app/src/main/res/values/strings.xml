@@ -2,4 +2,6 @@
     <string name="app_name">Olamide\'s Android Lab</string>
     <string name ="hello_message">Hello Cruel World!</string>
     <string name="button_message">I am a Button</string>
+    <string name="editmessage" translatable="false">I\'m an EditText</string>
+    <string name="hinttext" translatable="false">Write soimething here</string>
 </resources>
