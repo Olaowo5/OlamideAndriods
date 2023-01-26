@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name ="my_primary">#1950F3</color>
+    <color name ="my_secondary">#8064FA</color>
+    <color name ="my_statusbar">#F63EF6</color>
+    <color name ="my_secondaryTrait">#563BE1</color>
+
+    <color name ="my_primarydark">#10259C</color>
+    <color name ="my_secondarydark">#6C55D1</color>
+    <color name ="my_statusbardark">#C360C3</color>
+    <color name ="my_secondaryTraitdark">#402CA6</color>
+
+    <color name ="my_text">#4EACF6</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

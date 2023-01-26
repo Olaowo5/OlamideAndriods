@@ -3,4 +3,8 @@
     <string name="app_name">Olamide\'s Andriod Lab</string>
     <string name="hello_message">Hello ìka Aye</string>
     <string name="button_message">Emi ni Botini</string>
+    <string name="spin_message">Flag spin am</string>
+    <string name="btn3">Botini 3</string>
+    <string name="btn1">Botini 1</string>
+    <string name="btn2">Botini 2</string>
 </resources>
