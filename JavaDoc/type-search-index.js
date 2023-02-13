@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"algonquin.cst2335.owol","l":"BuildConfig"},{"p":"algonquin.cst2335.owol","l":"MainActivity"}];updateSearchResults();
