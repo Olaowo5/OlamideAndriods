@@ -2,5 +2,5 @@
 <resources>
     <string name="app_name">Olamide\'s Android Lab</string>
     <string name="hello_message">Hello Cruel World!</string>
-    <string name="button_message">I am a Button</string>
+    <string name="button_message">Login</string>
 </resources>

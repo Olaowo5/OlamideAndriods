@@ -2,5 +2,5 @@
 <resources>
     <string name="app_name">Olamide\'s Andriod Lab</string>
     <string name="hello_message">Bonjour Monde Cruel!</string>
-    <string name="button_message">Je suis un Bouton</string>
+    <string name="button_message">Connexion</string>
 </resources>
