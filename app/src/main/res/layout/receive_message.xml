@@ -3,31 +3,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/Message"
-        android:layout_width="138dp"
-        android:layout_height="27dp"
+        android:layout_width="291dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
         android:text="TextView"
+        android:textAlignment="textEnd"
+        android:textColor="#E91E63"
+        android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/Time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.846"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/profilepic"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.854"
+        app:layout_constraintVertical_bias="0.0"
         tools:text="Message Goes Here" />
 
     <TextView
         android:id="@+id/Time"
-        android:layout_width="118dp"
-        android:layout_height="25dp"
-        android:layout_marginBottom="624dp"
+        android:layout_width="218dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="176dp"
         android:text="TextView"
+        android:textAlignment="textStart"
+
+        android:textColor="#E91E63"
+
+
+        android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toStartOf="parent"
         tools:text="Time Goes Here" />
+
+    <ImageView
+        android:id="@+id/profilepic"
+        android:layout_width="70dp"
+        android:layout_height="68dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.39"
+        app:srcCompat="@drawable/shojs" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

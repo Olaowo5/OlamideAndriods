@@ -48,13 +48,18 @@ public class ChatRoom extends AppCompatActivity {
         binding.sendbtn.setOnClickListener(click -> {
 
 
+            if(binding.editTextO.getText() == null || binding.editTextO.getText().toString().trim().isEmpty()) {
+                // textView is empty or contains only blank space
+                //stop here
+                return;
+            }
 
             SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a");
             String currentDateandTime = sdf.format(new Date());
             String CDT = currentDateandTime;
 
             ChatMessage Cm = new ChatMessage(binding.editTextO.getText().toString(),CDT,true);
-
+            //ChatMessage Cm = new ChatMessage("Jon sending",CDT,true);
             messages.add(Cm);
 
             myAdapter.notifyItemInserted(messages.size()-1);
@@ -67,6 +72,11 @@ public class ChatRoom extends AppCompatActivity {
         binding.recbtn.setOnClickListener(click -> {
 
 
+            if(binding.editTextO.getText() == null || binding.editTextO.getText().toString().trim().isEmpty()) {
+                // textView is empty or contains only blank space
+                //stop here
+                return;
+            }
 
             SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a");
             String currentDateandTime = sdf.format(new Date());
@@ -130,7 +140,13 @@ public class ChatRoom extends AppCompatActivity {
             }
 
            public int getItemViewType(int position){
-                return position % 2;
+
+               ChatMessage TheMessage = messages.get(position);
+
+               if(TheMessage.IsSent())
+                return 0;
+               else
+                   return 1;
             }
         });
     }
