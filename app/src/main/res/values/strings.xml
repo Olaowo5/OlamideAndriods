@@ -1,15 +1,7 @@
 <resources>
-    <
-    <
-    <
-    <
-    <
-    <
-    < HEAD
+
     <string name="app_name">Olamide\'s Android Lab</string>
     <string name="hello_message">Hello Cruel World!</string>
     <string name="button_message">Login</string>
-    =======
-    <string name="app_name">Olamide\'s Andriod Lab</string>
-    >>>>>>> daa283d76ca89673d2f5a3d615a73b6c43ca8046
+
 </resources>

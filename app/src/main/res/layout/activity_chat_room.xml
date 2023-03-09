@@ -7,4 +7,49 @@
     android:layout_height="match_parent"
     tools:context=".ChatRoom">
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/recyleOla"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+  </androidx.recyclerview.widget.RecyclerView>
+
+  <Button
+      android:id="@+id/sendbtn"
+      android:layout_width="100dp"
+      android:layout_height="55dp"
+      android:layout_marginStart="4dp"
+      android:layout_marginBottom="28dp"
+      android:text="Send"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  <Button
+      android:id="@+id/recbtn"
+      android:layout_width="108dp"
+      android:layout_height="57dp"
+      android:layout_marginEnd="16dp"
+      android:layout_marginBottom="28dp"
+      android:text="Receive"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toEndOf="@+id/editTextO" />
+
+  <EditText
+      android:id="@+id/editTextO"
+      android:layout_width="181dp"
+      android:layout_height="54dp"
+      android:layout_marginBottom="28dp"
+      android:ems="10"
+      android:inputType="number|datetime|textPersonName|text|textPostalAddress|numberDecimal|textCapWords|phone|time"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toEndOf="@+id/sendbtn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

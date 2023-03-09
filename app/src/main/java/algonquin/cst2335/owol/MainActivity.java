@@ -3,7 +3,7 @@ package algonquin.cst2335.owol;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-<<<<<<< HEAD
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,16 +27,16 @@ public class MainActivity extends AppCompatActivity {
      * The button that will be used to run the password checker function
      */
     Button Btn = null;
-=======
 
-public class MainActivity extends AppCompatActivity {
 
->>>>>>> daa283d76ca89673d2f5a3d615a73b6c43ca8046
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-<<<<<<< HEAD
+
 
         tv = findViewById(R.id.textView);
          PT = findViewById(R.id.editPass);
@@ -148,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-=======
->>>>>>> daa283d76ca89673d2f5a3d615a73b6c43ca8046
+
     }
 }

@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.OlamidesAndriodLab" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-<<<<<<< HEAD
+
         <item name="colorPrimary">@color/my_primary</item>
         <item name="colorPrimaryVariant">@color/my_statusbar</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -12,15 +12,7 @@
         <item name="colorOnSecondary">@color/black</item>
 
         <item name="android:textColor">@color/my_text</item>
-=======
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
->>>>>>> daa283d76ca89673d2f5a3d615a73b6c43ca8046
+
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->

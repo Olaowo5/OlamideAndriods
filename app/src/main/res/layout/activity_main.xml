@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
-<<<<<<< HEAD
+
         android:id="@+id/textView"
         android:layout_width="154dp"
         android:layout_height="29dp"
@@ -41,14 +41,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
-=======
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
->>>>>>> daa283d76ca89673d2f5a3d615a73b6c43ca8046
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

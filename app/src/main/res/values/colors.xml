@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<<<<<<< HEAD
+
     <color name ="my_primary">#FFD70C</color>
     <color name ="my_secondary">#8064FA</color>
     <color name ="my_statusbar">#F63EF6</color>
@@ -12,13 +12,13 @@
     <color name ="my_secondaryTraitdark">#402CA6</color>
 
     <color name ="my_text">#FFBF00</color>
-=======
+
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
->>>>>>> daa283d76ca89673d2f5a3d615a73b6c43ca8046
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
