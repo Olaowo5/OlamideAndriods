@@ -3,6 +3,8 @@ package algonquin.cst2335.owol;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -170,6 +172,23 @@ public class ChatRoom extends AppCompatActivity {
         });
 
 
+        chatModel.selectedMessage.observe(this, (newMessageValue) -> {
+
+            MessageDetailsFragment chatFragment = new MessageDetailsFragment(newMessageValue );
+            //newValue is the newly set ChatMessage
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentLocation, chatFragment)
+                    .addToBackStack("")
+                    .commit();
+
+
+
+
+
+
+
+        });
 
     }
 
@@ -186,6 +205,7 @@ public class ChatRoom extends AppCompatActivity {
             TimeText = itemView.findViewById(R.id.Time);
 
             itemView.setOnClickListener(clk ->{
+                /*
                 //get postion of the row that is picked
                 int position = getAbsoluteAdapterPosition();
                 AlertDialog.Builder builder = new AlertDialog.Builder( ChatRoom.this );
@@ -216,6 +236,13 @@ public class ChatRoom extends AppCompatActivity {
                 })
 
                 .create().show();
+
+                 */
+
+                int position = getAbsoluteAdapterPosition();
+                ChatMessage selected = messages.get(position);
+
+                chatModel.selectedMessage.postValue(selected);
             });
 
         }

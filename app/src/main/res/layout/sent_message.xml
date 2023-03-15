@@ -7,46 +7,43 @@
 
     <TextView
         android:id="@+id/Message"
-        android:layout_width="284dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="288dp"
+        android:layout_height="wrap_content"
+
         android:text="TextView"
         android:textAlignment="textStart"
         android:textColor="#3F51B5"
 
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/Time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+
+
         app:layout_constraintStart_toEndOf="@+id/profilepic"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+
         tools:text="Message Goes Here" />
 
     <TextView
         android:id="@+id/Time"
-        android:layout_width="206dp"
-        android:layout_height="39dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="4dp"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+
         android:text="TextView"
         android:textAlignment="center"
         android:textColor="#3F51B5"
         android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Message"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="Time Goes Here" />
 
     <ImageView
         android:id="@+id/profilepic"
-        android:layout_width="70dp"
-        android:layout_height="68dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="95dp"
+        android:layout_height="82dp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.253"
+
         app:srcCompat="@drawable/warframe" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
