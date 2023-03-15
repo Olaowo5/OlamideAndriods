@@ -182,7 +182,15 @@ public class ChatRoom extends AppCompatActivity {
                     .addToBackStack("")
                     .commit();
 
-
+                    getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+                        @Override
+                        public void onBackStackChanged() {
+                            if(chatFragment.isVisible())
+                            {
+                                chatFragment.getView().setBackgroundColor(getResources().getColor(R.color.my_secondarydark));
+                            }
+                        }
+                    });
 
 
 
