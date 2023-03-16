@@ -79,11 +79,18 @@ public class ChatRoom extends AppCompatActivity {
 
             ChatMessage Cm = new ChatMessage(binding.editTextO.getText().toString(),CDT,true);
             //ChatMessage Cm = new ChatMessage("Jon sending",CDT,true);
+
+            //clear previous text
+            binding.editTextO.setText("");
+
+            Executor thread = Executors.newSingleThreadExecutor();
+            thread.execute(()->{
+                Cm.Id = (int)mDAO.insertMessage(Cm);
+            });
+
             messages.add(Cm);
 
             myAdapter.notifyItemInserted(messages.size()-1);
-            //clear previous text
-            binding.editTextO.setText("");
 
 
         });
@@ -103,12 +110,20 @@ public class ChatRoom extends AppCompatActivity {
 
             ChatMessage Cm = new ChatMessage(binding.editTextO.getText().toString(),CDT,false);
 
-            messages.add(Cm);
 
-            myAdapter.notifyItemInserted(messages.size()-1);
             //clear previous text
             binding.editTextO.setText("");
 
+
+           // mDAO.insertMessage(Cm);
+            Executor thread = Executors.newSingleThreadExecutor();
+            thread.execute(()->{
+                Cm.Id = (int)mDAO.insertMessage(Cm);
+            });
+
+            messages.add(Cm);
+
+            myAdapter.notifyItemInserted(messages.size()-1);
 
         });
 
@@ -196,9 +211,16 @@ public class ChatRoom extends AppCompatActivity {
                 .setPositiveButton("Yes",(dialog,cl)->{
 
                     ChatMessage cm = messages.get(position);
-                   // mDAO.deleteMessage(cm);
+
+                    Executor thread = Executors.newSingleThreadExecutor();
+                    thread.execute(()->{
+                        mDAO.deleteMessage(cm);
+                    });
+
+
                     messages.remove(position);
                     myAdapter.notifyItemRemoved(position);
+
 
                     Snackbar.make(MessageText, "You deleted message #" + position,
                             Snackbar.LENGTH_LONG)
@@ -206,6 +228,12 @@ public class ChatRoom extends AppCompatActivity {
                                 //undo call in action
                                 messages.add(position,cm);
                                 myAdapter.notifyItemInserted(position);
+
+
+                                thread.execute(()->{
+                                    mDAO.insertMessage(cm);
+                                });
+
                             })
                             .show();
 
