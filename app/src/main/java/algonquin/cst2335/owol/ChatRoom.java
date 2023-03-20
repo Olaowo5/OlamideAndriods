@@ -33,6 +33,7 @@ public class ChatRoom extends AppCompatActivity {
 
     ActivityChatRoomBinding binding;
 
+
     ArrayList<ChatMessage> messages = new ArrayList<>();
 
     ChatRoomViewModel chatModel;
