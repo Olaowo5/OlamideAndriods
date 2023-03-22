@@ -11,9 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -40,6 +43,88 @@ public class ChatRoom extends AppCompatActivity {
     ChatMessageDAO mDAO;
 
     private RecyclerView.Adapter myAdapter;
+
+    //will be called when the setSupportActionBar(binding.myToolbar) is called
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.ola_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    //when item on the menu is selected
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+       // return super.onOptionsItemSelected(item);
+
+        switch( item.getItemId() )
+        {
+            case R.id.action_delete: {
+                //put your ChatMessage deletion code here. If you select this item, you should show the alert dialog
+                //asking if the user wants to delete this message.
+
+
+                //get postion of the row that is picked
+                int position = PositionPicked;
+
+                if(position>=0) {
+                    String TheMessageString = SelectedMessage.message;
+                    AlertDialog.Builder builder = new AlertDialog.Builder(ChatRoom.this);
+
+                    builder.setMessage("Do you want to delete the message: " + TheMessageString)
+                            .setTitle("Question")
+
+                            .setPositiveButton("Yes", (dialog, cl) -> {
+
+                                ChatMessage cm = messages.get(position);
+
+                                Executor thread = Executors.newSingleThreadExecutor();
+                                thread.execute(() -> {
+                                    mDAO.deleteMessage(cm);
+                                });
+
+
+                                messages.remove(position);
+                                myAdapter.notifyItemRemoved(position);
+
+
+                                Snackbar.make(SelectedText, "You deleted message #" + position,
+                                                Snackbar.LENGTH_LONG)
+                                        .setAction("Undo", clo -> {
+                                            //undo call in action
+                                            messages.add(position, cm);
+                                            myAdapter.notifyItemInserted(position);
+
+
+                                            thread.execute(() -> {
+                                                mDAO.insertMessage(cm);
+                                            });
+
+                                        })
+                                        .show();
+                                PositionPicked = -1;
+
+                            })
+                            .setNegativeButton("No", (dialog, cl) -> {
+
+                                PositionPicked = -1;
+                            })
+
+                            .create().show();
+                }
+                break;
+            }
+            case R.id.action_about:
+            {
+                Toast toast = Toast.makeText(getApplicationContext(), "Version 1.0, created by Olamide Owolabi", Toast.LENGTH_SHORT);
+                toast.show();
+                break;
+            }
+        }
+
+        return true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +138,8 @@ public class ChatRoom extends AppCompatActivity {
         chatModel = new ViewModelProvider(this).get(ChatRoomViewModel.class);
         messages = chatModel.messages.getValue();
 
+        //the tool bar
+        setSupportActionBar(binding.stoolbar);
         if(messages == null)
         {
            chatModel.messages.postValue( messages = new ArrayList<ChatMessage>());
@@ -216,6 +303,9 @@ public class ChatRoom extends AppCompatActivity {
     }
 
 
+    //will be use din aiding deleteing
+    ChatMessage SelectedMessage = null; TextView SelectedText;
+    int PositionPicked  = -1;
     class MyRowHolder extends RecyclerView.ViewHolder {
         TextView MessageText;
         TextView TimeText;
@@ -279,6 +369,9 @@ public class ChatRoom extends AppCompatActivity {
                 int position = getAbsoluteAdapterPosition();
                 ChatMessage selected = messages.get(position);
 
+                SelectedMessage = selected;
+                PositionPicked = position;
+                SelectedText = MessageText;
                 chatModel.selectedMessage.postValue(selected);
             });
 

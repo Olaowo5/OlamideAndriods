@@ -18,21 +18,20 @@
         tools:context=".ChatRoom">
 
 
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/recyleOla"
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          android:layout_marginTop="70dp"
+          android:layout_marginBottom="75dp"
+          app:layout_constraintBottom_toBottomOf="@+id/sendbtn"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
 
-  <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/recyleOla"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
-      android:layout_marginTop="32dp"
-      app:layout_constraintBottom_toBottomOf="@+id/sendbtn"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-
-      >
+          app:layout_constraintTop_toTopOf="parent">
 
 
-  </androidx.recyclerview.widget.RecyclerView>
+      </androidx.recyclerview.widget.RecyclerView>
 
   <Button
       android:id="@+id/sendbtn"
@@ -65,6 +64,20 @@
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toEndOf="@+id/sendbtn" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+      <androidx.appcompat.widget.Toolbar
+          android:id="@+id/stoolbar"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@color/my_secondary"
+          android:minHeight="?attr/actionBarSize"
+          android:theme="?attr/actionBarTheme"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintBottom_toTopOf="@id/recyleOla"
+          tools:layout_editor_absoluteX="-2dp"
+          tools:layout_editor_absoluteY="2dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
   </FrameLayout>
 </LinearLayout>
