@@ -12,8 +12,13 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -38,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         queue = Volley.newRequestQueue(this);
 
         ActivityMainBinding binding = ActivityMainBinding.inflate( getLayoutInflater() );
+        setContentView(binding.getRoot());
 
         binding.forecastButton.setOnClickListener(click -> {
             cityName = binding.cityfield.getText().toString();
@@ -50,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 throw new RuntimeException(e);
             }
             String URL = null;
-            URL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + stringURL + "&api-key=972f4a9632b1de8f2d0f4037996c1e53&units=metric";
+            //https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${KeyName}
+            URL = "https://api.openweathermap.org/data/2.5/weather?q=" + stringURL + "&units=metric&appid=972f4a9632b1de8f2d0f4037996c1e53";
 
             /*
             String stringURL = null;
@@ -63,11 +70,44 @@ public class MainActivity extends AppCompatActivity {
             }
 */
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL, null,
-                    (response)->{},
+                    (response)->{
+
+                try{
+                        JSONObject coord = response.getJSONObject( "coord" );
+
+                        JSONArray weatherArray = response.getJSONArray ( "weather" );
+                        JSONObject position0 = weatherArray.getJSONObject(0);
+
+                        String descrip = position0.getString("description");
+                        String iconName = position0.getString("icon");
+
+
+                        JSONObject mainObject = response.getJSONObject("main");
+                        double current = mainObject.getDouble("temp");
+                        double min = mainObject.getDouble("temp_min");
+                        double max = mainObject.getDouble("temp_max");
+                        int humidity = mainObject.getInt("humidity");
+
+
+
+                        int vis = response.getInt("visibility");
+                        String name = response.getString( "name" );
+
+                        //IMAGE
+
+                }
+                catch ( JSONException e) {
+                    throw new RuntimeException(e);
+                }
+
+                    },
                     (error)->{ } );
 
             queue.add(request);
 
         });
     }
+
+
+
 }
