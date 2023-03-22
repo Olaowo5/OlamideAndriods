@@ -3,11 +3,23 @@ package algonquin.cst2335.owol;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-<<<<<<< HEAD
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import algonquin.cst2335.owol.databinding.ActivityMainBinding;
 
 /**
  * @author Olamide Owolabi
@@ -15,140 +27,47 @@ import android.widget.Toast;
  */
 public class MainActivity extends AppCompatActivity {
 
-    /**
-     * Holds the text at the center of the screen
-     */
-    TextView tv = null;
-    /**
-     * This will hold the password the user will enter
-     */
-    EditText PT = null;
-    /**
-     * The button that will be used to run the password checker function
-     */
-    Button Btn = null;
-=======
+    protected String cityName;
+   protected RequestQueue queue = null;
 
-public class MainActivity extends AppCompatActivity {
-
->>>>>>> daa283d76ca89673d2f5a3d615a73b6c43ca8046
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-<<<<<<< HEAD
 
-        tv = findViewById(R.id.textView);
-         PT = findViewById(R.id.editPass);
-         Btn = findViewById(R.id.lognButton);
+        //This part goes at the top of the onCreate function:
+        queue = Volley.newRequestQueue(this);
 
-        Btn.setOnClickListener(clk -> {
-            String ThePass = PT.getText().toString();
+        ActivityMainBinding binding = ActivityMainBinding.inflate( getLayoutInflater() );
 
-            if(!checkPasswordComplexitiy(ThePass))
-            {
-                tv.setText("You Shall Not Pass!");
+        binding.forecastButton.setOnClickListener(click -> {
+            cityName = binding.cityfield.getText().toString();
+
+
+            String stringURL = null;
+            try {
+                stringURL = URLEncoder.encode(String.valueOf(cityName), StandardCharsets.UTF_8.name());
+            } catch (UnsupportedEncodingException e) {
+                throw new RuntimeException(e);
             }
+            String URL = null;
+            URL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + stringURL + "&api-key=972f4a9632b1de8f2d0f4037996c1e53&units=metric";
+
+            /*
+            String stringURL = null;
+            try {
+                stringURL = "https://api.openweathermap.org/data/2.5/weather?q=" +
+                        URLEncoder.encode(cityName,"UTF-8")
+                        +"&appid={972f4a9632b1de8f2d0f4037996c1e53&units=metric}";
+            } catch (UnsupportedEncodingException e) {
+                throw new RuntimeException(e);
+            }
+*/
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL, null,
+                    (response)->{},
+                    (error)->{ } );
+
+            queue.add(request);
+
         });
-    }
-
-    /**
-     * Used in checking password complexity
-     * @param pw The String Object we are checking
-     * @return Returns true if I deemed it Okay
-     */
-    boolean checkPasswordComplexitiy(String pw)
-    {
-        boolean IsOk = true;
-
-        boolean foundUpperCase, foundLowerCase, foundNumber, foundSpecial;
-
-        foundUpperCase = foundLowerCase = foundNumber = foundSpecial = false;
-
-
-
-        for (int i = 0; i < pw.length(); i++) {
-            char c = pw.charAt(i);
-          boolean bl=  isSpecialCharacter(c);
-
-            //To Check if it has special character
-          if(bl == true)
-          {
-              foundSpecial = true;
-
-          }
-          else if(Character.isDigit(c))
-           {//To check if it has number
-               foundNumber =true;
-           }
-          else if(Character.isUpperCase(c))
-          {
-              //To Check if it has Uppercase
-              foundUpperCase =true;
-          }
-          else if(Character.isLowerCase(c))
-          {
-              foundLowerCase = true;
-          }
-
-        }
-
-        //Check if it is lowcase
-
-        if(!foundLowerCase)
-        {
-            Toast toast = Toast.makeText(getApplicationContext(), "Password is missing Small Letter", Toast.LENGTH_SHORT);
-            toast.show();
-            IsOk = false;
-        }
-        else if(!foundUpperCase)
-        {
-            Toast toast = Toast.makeText(getApplicationContext(), "Password is missing Capital Letter", Toast.LENGTH_SHORT);
-            toast.show();
-            IsOk =false;
-        }
-        else if (!foundNumber)
-        {
-            Toast toast = Toast.makeText(getApplicationContext(), "Password is missing Number", Toast.LENGTH_SHORT);
-            toast.show();
-            IsOk =false;
-        }
-        else if(!foundSpecial)
-        {
-            Toast toast = Toast.makeText(getApplicationContext(), "Password is missing Special Character", Toast.LENGTH_SHORT);
-            toast.show();
-            IsOk =false;
-        }
-        return IsOk;
-    }//end password check
-
-    /**
-     * Will be used to check if a character of as string is special
-     * @param cp the character were checking
-     * @return true if it is a character else false
-     */
-    boolean isSpecialCharacter(char cp)
-    {
-
-
-        switch (cp)
-        {
-            case '#':
-            case '?':
-            case '*':
-            case'@':
-            case'!':
-            case'%':
-            case'^':
-            case'$':
-                return true;
-            default:
-                return false;
-        }
-
-
-
-=======
->>>>>>> daa283d76ca89673d2f5a3d615a73b6c43ca8046
     }
 }

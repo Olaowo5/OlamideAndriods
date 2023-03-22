@@ -2,21 +2,14 @@
     <!-- Base application theme. -->
     <style name="Theme.OlamidesAndriodLab" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-<<<<<<< HEAD
+
         <item name="colorPrimary">@color/my_primarydark</item>
         <item name="colorPrimaryVariant">@color/my_statusbardark</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/my_secondarydark</item>
         <item name="colorSecondaryVariant">@color/my_secondaryTraitdark</item>
-=======
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
->>>>>>> daa283d76ca89673d2f5a3d615a73b6c43ca8046
+
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
