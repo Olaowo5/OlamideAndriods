@@ -28,6 +28,42 @@
         android:text="Get Forecast"
         app:iconTint="#9C27B0" />
 
+    <TextView
+        android:id="@+id/temp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Temp Goes Here"
+        />
+    <TextView
+        android:id="@+id/Maxtemp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Max Temp Goes Here"
+        />
+    <TextView
+        android:id="@+id/Mintemp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Min Temp Goes Here"
+        />
+    <TextView
+        android:id="@+id/humidity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Humidity Goes Here"
+        />
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"/>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description Goes Here"
+        />
 
 
 </LinearLayout>

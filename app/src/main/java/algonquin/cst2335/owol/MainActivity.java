@@ -2,10 +2,14 @@ package algonquin.cst2335.owol;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +24,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -72,29 +79,62 @@ public class MainActivity extends AppCompatActivity {
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL, null,
                     (response)->{
 
-                try{
-                        JSONObject coord = response.getJSONObject( "coord" );
+                try {
+                    JSONObject coord = response.getJSONObject("coord");
 
-                        JSONArray weatherArray = response.getJSONArray ( "weather" );
-                        JSONObject position0 = weatherArray.getJSONObject(0);
+                    JSONArray weatherArray = response.getJSONArray("weather");
+                    JSONObject position0 = weatherArray.getJSONObject(0);
 
-                        String descrip = position0.getString("description");
-                        String iconName = position0.getString("icon");
-
-
-                        JSONObject mainObject = response.getJSONObject("main");
-                        double current = mainObject.getDouble("temp");
-                        double min = mainObject.getDouble("temp_min");
-                        double max = mainObject.getDouble("temp_max");
-                        int humidity = mainObject.getInt("humidity");
+                    String descrip = position0.getString("description");
+                    String iconName = position0.getString("icon");
 
 
+                    JSONObject mainObject = response.getJSONObject("main");
+                    double current = mainObject.getDouble("temp");
+                    double min = mainObject.getDouble("temp_min");
+                    double max = mainObject.getDouble("temp_max");
+                    int humidity = mainObject.getInt("humidity");
 
-                        int vis = response.getInt("visibility");
-                        String name = response.getString( "name" );
 
-                        //IMAGE
+                    int vis = response.getInt("visibility");
+                    String name = response.getString("name");
 
+                    //IMAGE
+
+                    String pathName = getFilesDir() + "/" + iconName + ".png";
+                    File file = new File(pathName);
+                    Bitmap image = null;
+                    if (file.exists()) {
+                        image = BitmapFactory.decodeFile(pathName);
+                    }
+                    else {
+                        String imageUrl = "https://openweathermap.org/img/w/" + iconName + ".png";
+
+                        ImageRequest imgReq = new ImageRequest(imageUrl, new Response.Listener<Bitmap>() {
+                            @Override
+                            public void onResponse(Bitmap bitmap) {
+                                // Do something with loaded bitmap...
+
+
+                                {
+                                    FileOutputStream fOut = null;
+                                    try {
+                                        fOut = openFileOutput(iconName + ".png", Context.MODE_PRIVATE);
+
+                                        image.compress(Bitmap.CompressFormat.PNG, 100, fOut);
+                                        fOut.flush();
+                                        fOut.close();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+
+                                    }
+                                }
+                            }
+                        }, 1024, 1024, ImageView.ScaleType.CENTER, null, (error) -> {
+
+                        });
+
+                    }
                 }
                 catch ( JSONException e) {
                     throw new RuntimeException(e);
