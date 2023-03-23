@@ -33,36 +33,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Temp Goes Here"
-        />
+        android:visibility="invisible"
+        android:textColor="#D82BF6" />
     <TextView
         android:id="@+id/Maxtemp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Max Temp Goes Here"
+        android:textColor="#D82BF6"
         />
     <TextView
         android:id="@+id/Mintemp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Min Temp Goes Here"
+        android:textColor="#D82BF6"
         />
     <TextView
         android:id="@+id/humidity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Humidity Goes Here"
+        android:textColor="#D82BF6"
         />
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"/>
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:srcCompat="@drawable/gamep" />
 
     <TextView
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Description Goes Here"
+        android:textColor="#5D15DD"
         />
 
 
